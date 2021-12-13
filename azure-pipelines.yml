@@ -19,18 +19,15 @@ steps:
   inputs:
     terraformVersion: '0.12.28'
 
-- task: TerraformTaskV1@0
-  displayName: terraform init
+
+- task: TerraformTaskV2@2
   inputs:
     provider: 'azurerm'
     command: 'init'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/skip-step'
-    backendServiceArm: '$(subscription)'
-    backendAzureRmResourceGroupName: '$(resourceGroup)'
-    backendAzureRmStorageAccountName: '$(storageAccount)'
-    backendAzureRmContainerName: '$(container)'
-    backendAzureRmKey: '$(tfstateFile)'
-
+    backendServiceArm: 'Azure subscription 1(fff2e8a5-4f14-4af4-928a-bddb26fba266)'
+    backendAzureRmResourceGroupName: 'home_lab_ADO'
+    backendAzureRmStorageAccountName: 'sindhuhomelabterraform'
+    backendAzureRmContainerName: 'terraformstate'
 - task: TerraformTaskV1@0
   displayName: terraform plan -out=tfplan
   inputs:
